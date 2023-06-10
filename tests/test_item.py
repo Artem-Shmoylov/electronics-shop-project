@@ -37,8 +37,16 @@ def test_name_setter(test_item):
 def test_instantiate_from_csv(test_item):
     assert Item.instantiate_from_csv() is None
 
+
 def test_string_to_number():
     assert Item.string_to_number("6.5") == 6
     assert Item.string_to_number(6.5) == 6
     with pytest.raises(ValueError):
         Item.string_to_number("пять")
+
+
+def test_repr_method(test_item):
+    assert repr(test_item) == "Item('Телевизор', 600000, 14)"
+
+def test_str_method(test_item):
+    assert str(test_item) == 'Телевизор'
