@@ -2,11 +2,17 @@
 import pytest
 
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
 def test_item():
     return Item("Телевизор", 600000, 14)
+
+@pytest.fixture
+def test_item2():
+    return Phone("Смартфон", 15000, 15, 2)
+
 
 
 def test_init(test_item):
@@ -50,3 +56,7 @@ def test_repr_method(test_item):
 
 def test_str_method(test_item):
     assert str(test_item) == 'Телевизор'
+
+def test_add_method(test_item, test_item2):
+    assert test_item + test_item2 == 29
+    assert test_item + 10 == None
